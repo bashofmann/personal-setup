@@ -129,6 +129,7 @@ brew "lynx"
 brew "lz4"
 brew "mackup"
 brew "makedepend"
+brew "mas"
 brew "maven"
 brew "mhash"
 brew "mcrypt"
@@ -260,3 +261,13 @@ cask "visual-studio-code"
 cask "vlc"
 cask "wireshark"
 cask "zoomus"
+mas "2Do", id: 477670270
+mas "iMovie", id: 408981434
+mas "iPhoto", id: 408981381
+mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 715768417
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator", id: 407963104
+mas "Screeny", id: 440991524
+mas "Xcode", id: 497799835
