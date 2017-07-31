@@ -224,7 +224,6 @@ cask "font-roboto-mono"
 cask "font-roboto-slab"
 cask "font-source-code-pro"
 cask "font-source-serif-pro"
-cask "franz"
 cask "github-desktop"
 cask "gogland"
 cask "google-backup-and-sync"
@@ -246,6 +245,7 @@ cask "pgadmin3"
 cask "phpstorm"
 cask "postman"
 cask "pycharm"
+cask "rambox"
 cask "robomongo"
 cask "rubymine"
 cask "skype"
@@ -262,10 +262,12 @@ cask "vlc"
 cask "wireshark"
 cask "zoomus"
 mas "2Do", id: 477670270
+mas "Evernote", id: 406056744
 mas "iMovie", id: 408981434
 mas "iPhoto", id: 408981381
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
+mas "Mini Metro", id: 1047760200
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
