@@ -1,0 +1,27 @@
+# Linux
+*~
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# NFS
+.nfs*
+
+# IDEA / PHPStorm
+/.idea
+/*.iml
+/*.ipr
+/*.iws
+
+# Eclipse
+/out/
+/*.project
+/.metadata
+/.settings/

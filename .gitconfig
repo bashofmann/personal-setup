@@ -1,0 +1,26 @@
+[user]
+	name = Bastian Hofmann
+	email = bashofmann@gmail.com
+[alias]
+    l = log --pretty=format:'%h %Cred%ad%Creset %an %Cgreen%s%Creset' --graph --date=short
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/bastian/.gitignore_global
+    editor = vim
+	autocrlf = input
+    eol = lf
+[color]
+    ui = true
+[branch]
+    autosetuprebase = always
+[pull]
+    rebase = true
+[diff]
+    compactionHeuristic = true
+[rebase]
+    autostash = true
+[ssh]
+	variant = ssh
+[ghq]
+    root = ~/ghq
