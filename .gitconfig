@@ -6,7 +6,7 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/bastian/.gitignore_global
+	excludesfile = ~/.gitignore_global
     editor = vim
 	autocrlf = input
     eol = lf
