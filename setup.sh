@@ -85,6 +85,11 @@ sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # natural scrolling disabled
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE 
 
+# dock
+defaults write com.apple.dock orientation -string left
+defaults write com.apple.dock tilesize -int 30
+killall Dock
+
 # key repeat
 defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
