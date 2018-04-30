@@ -77,6 +77,18 @@ sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
 sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport prefs DisconnectOnLogout=NO
 
+# click on tap
+sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# natural scrolling disabled
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE 
+
+# key repeat
+defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
+
 if [ -n "$SETUP_NAME" ] && [ -n "$SETUP_EMAIL" ]; then
   sudo defaults write /Library/Preferences/com.apple.loginwindow \
     LoginwindowText \
@@ -180,6 +192,19 @@ logk
 
 logn "Installing go modules"
 go get -u golang.org/x/lint/golint
+logk
+
+logn "Setup shell"
+if grep -Fxq "$(which zsh)" /etc/shells
+then
+    echo "Already in /etc/shells"
+else
+    sudo bash -c "echo "$(which zsh)" >> /etc/shells"
+fi
+if [ "$SHELL" != "$(which zsh)" ]
+then
+    chsh -s $(which zsh)
+fi
 logk
 
 SETUP_SUCCESS="1"
