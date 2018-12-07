@@ -188,6 +188,11 @@ npm install -g npm
 npm install -g dockerfilelint
 npm install -g gatsby
 npm install -g yo
+npm install -g @angular/cli
+npm install -g bash-language-server
+npm install -g serverless
+npm install -g snyk
+npm install -g hugo-cli
 logk
 
 logn "Creating source code folders"
