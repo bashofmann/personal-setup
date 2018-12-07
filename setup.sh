@@ -157,6 +157,7 @@ cp .gitconfig ~/.gitconfig
 cp .gitignore_global ~/.gitignore_global
 cp .profile ~/.profile
 cp .zprofile ~/.zprofile
+cp topgrade.toml ~/Library/Preferences/topgrade.toml
 logk
 
 # source env

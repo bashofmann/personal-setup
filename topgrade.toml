@@ -1,0 +1,7 @@
+git_repos = [
+]
+
+[pre_commands]
+
+[commands]
+"NPM" = "npm update -g"
