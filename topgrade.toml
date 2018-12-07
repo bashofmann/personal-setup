@@ -5,3 +5,4 @@ git_repos = [
 
 [commands]
 "NPM" = "npm update -g"
+"brew cask" = "brew cask upgrade"
