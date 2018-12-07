@@ -15,14 +15,32 @@ setopt EXTENDED_HISTORY
 
 bindkey "\e[3~" delete-char
 
+export GOPATH="$HOME/go"
+export PATH=~/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=${PATH}:${HOME}/.composer/vendor/bin;
+export PATH="$GOPATH/bin:$PATH"
+export NODE_PATH=/usr/local/lib/node_modules
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
+export C_INCLUDE_PATH=/user/local/include
+export LIBRARY_PATH=/usr/local/lib
+
+#alias ls="colorls"
+alias ll="exa -l -a --git"
+#alias cat="bat"
+alias ping='prettyping --nolegend'
+
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug mafredri/zsh-async, from:github
-zplug zsh-users/zsh-autosuggestions, from:github
-zplug bashofmann/pure, use:pure.zsh, from:github, as:theme
-zplug "plugins/composer",   from:oh-my-zsh
-zplug "plugins/docker",   from:oh-my-zsh
+zplug "mafredri/zsh-async", from:github, use:async.plugin.zsh
+zplug "zsh-users/zsh-autosuggestions", from:github
+zplug "bashofmann/pure", use:pure.zsh, from:github, as:theme
+zplug "plugins/composer", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/npm", from:oh-my-zsh
+zplug "nojanath/ansible-zsh-completion", from:github
+zplug "srijanshetty/zsh-pip-completion", from:github
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -35,6 +53,8 @@ zplug load
 
 source <(kubectl completion zsh)
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source <(helm completion zsh)
+source <(ark completion zsh)
 
 explain () {
   if [ "$#" -eq 0 ]; then
@@ -63,3 +83,10 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
 }
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
