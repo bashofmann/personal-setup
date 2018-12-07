@@ -6,3 +6,4 @@ git_repos = [
 [commands]
 "NPM" = "npm update -g"
 "brew cask" = "brew cask upgrade"
+"pip" = "pip list -o --format freeze | cut -d '=' -f 1 | xargs pip install -U --upgrade-strategy eager"
