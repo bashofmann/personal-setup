@@ -5,6 +5,5 @@ git_repos = [
 
 [commands]
 "NPM" = "npm update -g"
-"brew cask" = "brew cask upgrade"
 "pip" = "pip list -o --format freeze | cut -d '=' -f 1 | xargs pip install -U --upgrade-strategy eager"
 "MS Update" = "/Library/Application\\ Support/Microsoft/MAU2.0/Microsoft\\ AutoUpdate.app/Contents/MacOS/msupdate --install"
