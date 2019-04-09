@@ -27,7 +27,6 @@ brew "ansible", link: false
 brew "ant"
 brew "apr"
 brew "apr-util"
-brew "ark"
 brew "asciinema"
 brew "lua"
 brew "autoconf"
@@ -51,6 +50,7 @@ brew "gettext"
 brew "libffi"
 brew "pixman"
 brew "gmp"
+brew "libevent"
 brew "libunistring"
 brew "nettle"
 brew "emacs"
@@ -64,7 +64,6 @@ brew "consul"
 brew "coreutils"
 brew "cscope"
 brew "curl"
-brew "libevent"
 brew "libssh2"
 brew "dep"
 brew "diff-so-fancy"
@@ -110,8 +109,10 @@ brew "ncurses"
 brew "htop"
 brew "httpie"
 brew "hub"
+brew "shared-mime-info"
 brew "imagemagick"
 brew "imap-uw"
+brew "ipcalc"
 brew "jbig2dec"
 brew "jenv"
 brew "oniguruma"
@@ -171,9 +172,9 @@ brew "qemu"
 brew "re2c"
 brew "redis"
 brew "ripgrep"
+brew "ruby", link: true
 brew "s3cmd"
 brew "scala"
-brew "shared-mime-info"
 brew "shellcheck"
 brew "skaffold"
 brew "socat"
@@ -193,6 +194,7 @@ brew "typescript"
 brew "v8"
 brew "vault"
 brew "vault-cli"
+brew "velero"
 brew "vim"
 brew "watch"
 brew "watchman"
@@ -239,6 +241,7 @@ cask "github"
 cask "goland"
 cask "google-backup-and-sync"
 cask "google-chrome-beta"
+cask "hyper"
 cask "hyperswitch"
 cask "istat-menus"
 cask "iterm2"
@@ -273,17 +276,17 @@ cask "vlc"
 cask "wireshark"
 cask "xquartz"
 cask "colindean/fonts-nonfree/font-microsoft-office"
-mas "2Do", id: 477670270
-mas "Amphetamine", id: 937984704
-mas "Fotor Photo Editor", id: 503039729
-mas "iMovie", id: 408981434
-mas "iPhoto", id: 408981381
-mas "Keynote", id: 409183694
-mas "Microsoft Remote Desktop", id: 715768417
-mas "Mini Metro", id: 1047760200
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pixelmator", id: 407963104
-mas "Screeny", id: 440991524
-mas "Theine", id: 955848755
-mas "Xcode", id: 497799835
+mas "com.apple.dt.Xcode", id: 497799835
+mas "com.apple.iMovieApp", id: 408981434
+mas "com.apple.iPhoto", id: 408981381
+mas "com.apple.iWork.Keynote", id: 409183694
+mas "com.apple.iWork.Numbers", id: 409203825
+mas "com.apple.iWork.Pages", id: 409201541
+mas "com.drewwilson.screeny", id: 440991524
+mas "com.everimaging.fotormac", id: 503039729
+mas "com.guidedways.TodoMac", id: 477670270
+mas "com.if.Amphetamine", id: 937984704
+mas "com.microsoft.rdc.mac", id: 715768417
+mas "com.mpdigital.MiniMetro", id: 1047760200
+mas "com.pixelmatorteam.pixelmator", id: 407963104
+mas "de.martinlexow.Theine", id: 955848755

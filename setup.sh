@@ -196,13 +196,17 @@ npm install -g hugo-cli
 logk
 
 logn "Creating source code folders"
-mkdir -p ~/ghq
 mkdir -p ~/go
 mkdir -p ~/bin
 logk
 
 logn "Installing go modules"
 go get -u golang.org/x/lint/golint
+go get github.com/brancz/gojsontoyaml
+go get github.com/mikefarah/yq
+go get -u -v github.com/heptio/sonobuoy
+go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
+go get golang.org/x/tools/cmd/goimports
 logk
 
 logn "Setup shell"

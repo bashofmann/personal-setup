@@ -1,6 +1,8 @@
 [user]
 	name = Bastian Hofmann
 	email = bashofmann@gmail.com
+[includeIf "gitdir:~/go/src/gitlab.syseleven.de/"]
+    path = ~/go/src/gitlab.syseleven.de/.gitconfig    
 [alias]
     l = log --pretty=format:'%h %Cred%ad%Creset %an %Cgreen%s%Creset' --graph --date=short
 [push]
@@ -23,4 +25,12 @@
 [ssh]
 	variant = ssh
 [ghq]
-    root = ~/ghq
+    root = ~/go/src
+[pager]
+    fdiff = diff-so-fancy | less --tabs=1,5 -RFX
+    fshow = diff-so-fancy | less --tabs=1,5 -RFX
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
