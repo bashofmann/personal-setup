@@ -94,6 +94,9 @@ killall Dock
 defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 
+# language popup
+defaults write -g ApplePressAndHoldEnabled -bool true
+
 if [ -n "$SETUP_NAME" ] && [ -n "$SETUP_EMAIL" ]; then
   sudo defaults write /Library/Preferences/com.apple.loginwindow \
     LoginwindowText \
@@ -193,6 +196,26 @@ npm install -g bash-language-server
 npm install -g serverless
 npm install -g snyk
 npm install -g hugo-cli
+logk
+
+logn "Installing krew plugins"
+(
+ set -x; cd "$(mktemp -d)" &&
+ curl -fsSLO "https://storage.googleapis.com/krew/v0.2.1/krew.{tar.gz,yaml}" &&
+ tar zxvf krew.tar.gz &&
+ ./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" install --manifest=krew.yaml --archive=krew.tar.gz
+)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+kubectl krew update
+kubectl krew upgrade
+kubectl krew install debug-shell
+kubectl krew install get-all
+kubectl krew install ingress-nginx
+kubectl krew install open-svc
+kubectl krew install resource-capacity
+kubectl krew install sniff
+kubectl krew install view-secret
+kubectl krew install view-utilization
 logk
 
 logn "Creating source code folders"
