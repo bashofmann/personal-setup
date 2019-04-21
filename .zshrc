@@ -21,6 +21,9 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH=${PATH}:${HOME}/.composer/vendor/bin;
 export PATH="$GOPATH/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=$PATH:$HOME/.linkerd2/bin
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export NODE_PATH=/usr/local/lib/node_modules
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
 export C_INCLUDE_PATH=/user/local/include
@@ -36,7 +39,7 @@ alias ping='prettyping --nolegend'
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug "mafredri/zsh-async", from:github, use:async.plugin.zsh
+zplug "mafredri/zsh-async", from:github, use:async.zsh
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "bashofmann/pure", use:pure.zsh, from:github, as:theme
 zplug "plugins/composer", from:oh-my-zsh
@@ -58,6 +61,10 @@ source <(kubectl completion zsh)
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
 source <(velero completion zsh)
+
+k8s_connect() {
+    source ~/go/src/gitlab.syseleven.de/kubernetes/kubermatic-installer/bin/connect-customer-cluster.sh "$@"
+}
 
 explain () {
   if [ "$#" -eq 0 ]; then
