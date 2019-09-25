@@ -83,7 +83,7 @@ sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # natural scrolling disabled
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE 
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE
 
 # dock
 defaults write com.apple.dock orientation -string left
@@ -198,6 +198,10 @@ npm install -g snyk
 npm install -g hugo-cli
 logk
 
+logn "Installing php/composer stuff"
+curl -sS https://get.symfony.com/cli/installer | bash
+logk
+
 logn "Installing krew plugins"
 (
  set -x; cd "$(mktemp -d)" &&
@@ -208,10 +212,13 @@ logn "Installing krew plugins"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 kubectl krew update
 kubectl krew upgrade
+kubectl krew install access-matrix
 kubectl krew install debug-shell
 kubectl krew install get-all
 kubectl krew install ingress-nginx
+kubectl krew install oidc-login
 kubectl krew install open-svc
+kubectl krew install rbac-lookup
 kubectl krew install resource-capacity
 kubectl krew install sniff
 kubectl krew install view-secret
