@@ -176,26 +176,11 @@ brew bundle
 logk
 
 logn "Installing pecl extensions"
-pecl install --soft apcu || true
-pecl install --soft ast || true
-pecl install --soft memcached || true
-pecl install --soft redis || true
-pecl install --soft imagick || true
-pecl install --soft mongodb || true
-pecl install --soft stats || true
 pecl install --soft xdebug || true
 logk
 
 logn "Installing global npm modules"
 npm install -g npm
-npm install -g dockerfilelint
-npm install -g gatsby
-npm install -g yo
-npm install -g @angular/cli
-npm install -g bash-language-server
-npm install -g serverless
-npm install -g snyk
-npm install -g hugo-cli
 logk
 
 logn "Installing php/composer stuff"
@@ -219,10 +204,13 @@ kubectl krew install ingress-nginx
 kubectl krew install oidc-login
 kubectl krew install open-svc
 kubectl krew install rbac-lookup
+kubectl krew install rbac-view
 kubectl krew install resource-capacity
 kubectl krew install sniff
+kubectl krew install tree
 kubectl krew install view-secret
 kubectl krew install view-utilization
+kubectl krew install whoami
 logk
 
 logn "Creating source code folders"
@@ -234,7 +222,6 @@ logn "Installing go modules"
 go get -u golang.org/x/lint/golint
 go get github.com/brancz/gojsontoyaml
 go get github.com/mikefarah/yq
-go get -u -v github.com/heptio/sonobuoy
 go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
 go get golang.org/x/tools/cmd/goimports
 logk

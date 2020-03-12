@@ -15,18 +15,23 @@ setopt EXTENDED_HISTORY
 
 bindkey "\e[3~" delete-char
 
+alias helmprotoe="protoc -I ${HOME}/repos/helm/_proto/ -I ${HOME}/repos/protobuf/src --encode hapi.release.Release ${HOME}/repos/helm/_proto/hapi/**/*"
+alias helmprotod="protoc -I ${HOME}/repos/helm/_proto/ -I ${HOME}/repos/protobuf/src --decode hapi.release.Release ${HOME}/repos/helm/_proto/hapi/**/*"
+
 export GOPATH="$HOME/go"
-export PATH=~/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:$PATH:${HOME}/bin
 export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=${PATH}:${HOME}/.composer/vendor/bin;
+export PATH=/Users/bhofmann/.gem/ruby/2.6.0/bin:$PATH
+export PATH=${PATH}:${HOME}/.composer/vendor/bin
 export PATH="$GOPATH/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="$HOME/.symfony/bin:$PATH"
+export PATH=$PATH:$HOME/.linkerd2/bin:${HOME}/bin
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export NODE_PATH=/usr/local/lib/node_modules
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
 export C_INCLUDE_PATH=/user/local/include
 export LIBRARY_PATH=/usr/local/lib
 export LANG="en_US.UTF-8"
@@ -37,17 +42,14 @@ export LANG="en_US.UTF-8"
 alias ll="exa -l -a --git"
 #alias cat="bat"
 alias ping='prettyping --nolegend'
+alias k=kubectl
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "mafredri/zsh-async", from:github, use:async.zsh
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "bashofmann/pure", use:pure.zsh, from:github, as:theme
-zplug "plugins/composer", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-zplug "nojanath/ansible-zsh-completion", from:github
-zplug "srijanshetty/zsh-pip-completion", from:github
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -58,14 +60,24 @@ fi
 
 zplug load
 
-source <(kubectl completion zsh)
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
-source <(velero completion zsh)
+# source <(helm completion zsh)
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+source <(kubectl completion zsh)
 
 k8s_connect() {
     source ~/go/src/gitlab.syseleven.de/kubernetes/kubermatic-installer/bin/connect-customer-cluster.sh "$@"
 }
+
+adminkubectl() {
+    ~/go/src/gitlab.syseleven.de/kubernetes/kubermatic-installer/bin/adminkubectl "$@"
+}
+
+source <(kubectl completion zsh | sed 's/kubectl/adminkubectl/g')
 
 explain () {
   if [ "$#" -eq 0 ]; then
@@ -82,6 +94,16 @@ explain () {
   fi
 }
 
+gs() {
+    cd $(ghq list --full-path --exact $1)
+}
+
+_gs_complete() {
+    _values 'gs' $(ghq list --unique)
+}
+
+compdef _gs_complete gs
+
 # colorful man pages
 man() {
     env \
@@ -95,12 +117,4 @@ man() {
             man "$@"
 }
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+# export PATH="/usr/local/opt/helm@2/bin:$PATH"
