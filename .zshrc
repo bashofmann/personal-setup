@@ -15,9 +15,6 @@ setopt EXTENDED_HISTORY
 
 bindkey "\e[3~" delete-char
 
-alias helmprotoe="protoc -I ${HOME}/repos/helm/_proto/ -I ${HOME}/repos/protobuf/src --encode hapi.release.Release ${HOME}/repos/helm/_proto/hapi/**/*"
-alias helmprotod="protoc -I ${HOME}/repos/helm/_proto/ -I ${HOME}/repos/protobuf/src --decode hapi.release.Release ${HOME}/repos/helm/_proto/hapi/**/*"
-
 export GOPATH="$HOME/go"
 export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:$PATH:${HOME}/bin
 export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -61,23 +58,8 @@ fi
 zplug load
 
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-# source <(helm completion zsh)
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+source <(helm completion zsh)
 source <(kubectl completion zsh)
-
-k8s_connect() {
-    source ~/go/src/gitlab.syseleven.de/kubernetes/kubermatic-installer/bin/connect-customer-cluster.sh "$@"
-}
-
-adminkubectl() {
-    ~/go/src/gitlab.syseleven.de/kubernetes/kubermatic-installer/bin/adminkubectl "$@"
-}
-
-source <(kubectl completion zsh | sed 's/kubectl/adminkubectl/g')
 
 explain () {
   if [ "$#" -eq 0 ]; then
@@ -116,5 +98,3 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
 }
-
-# export PATH="/usr/local/opt/helm@2/bin:$PATH"
