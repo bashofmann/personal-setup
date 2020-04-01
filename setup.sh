@@ -78,12 +78,12 @@ sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/d
 sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport prefs DisconnectOnLogout=NO
 
 # click on tap
-sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
 sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # natural scrolling disabled
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool FALSE
+defaults write -g com.apple.swipescrolldirection '0'
 
 # dock
 defaults write com.apple.dock orientation -string left
@@ -137,7 +137,7 @@ xcode_license
 # install homebrew
 if ! [ -x "$(command -v brew)" ]; then
   logn "Installing homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   logk
 fi
 
@@ -154,13 +154,14 @@ else
 fi
 
 logn "Copy environment files"
+mkdir -p ~/.config
 cp .vimrc ~/.vimrc
 cp .zshrc ~/.zshrc
 cp .gitconfig ~/.gitconfig
 cp .gitignore_global ~/.gitignore_global
 cp .profile ~/.profile
 cp .zprofile ~/.zprofile
-cp topgrade.toml ~/Library/Preferences/topgrade.toml
+cp topgrade.toml ~/.config/topgrade.toml
 logk
 
 # source env
@@ -197,6 +198,7 @@ logn "Installing krew plugins"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 kubectl krew update
 kubectl krew upgrade
+kubectl krew system receipts-upgrade
 kubectl krew install access-matrix
 kubectl krew install debug-shell
 kubectl krew install get-all
@@ -214,8 +216,9 @@ kubectl krew install whoami
 logk
 
 logn "Creating source code folders"
-mkdir -p ~/go
+mkdir -p ~/dev
 mkdir -p ~/bin
+mkdir -p ~/tmp
 logk
 
 logn "Installing go modules"
@@ -237,6 +240,8 @@ if [ "$SHELL" != "$(which zsh)" ]
 then
     chsh -s $(which zsh)
 fi
+sudo chmod -R 755 /usr/local/share/zsh
+sudo chown -R root:staff /usr/local/share/zsh
 logk
 
 SETUP_SUCCESS="1"

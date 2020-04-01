@@ -15,29 +15,23 @@ setopt EXTENDED_HISTORY
 
 bindkey "\e[3~" delete-char
 
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/dev"
 export PATH=${HOME}/bin:/usr/local/sbin:/usr/local/bin:$PATH:${HOME}/bin
 export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=/Users/bhofmann/.gem/ruby/2.6.0/bin:$PATH
 export PATH=${PATH}:${HOME}/.composer/vendor/bin
 export PATH="$GOPATH/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH=$PATH:$HOME/.linkerd2/bin:${HOME}/bin
+export PATH=$PATH:${HOME}/bin
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export NODE_PATH=/usr/local/lib/node_modules
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home
 export C_INCLUDE_PATH=/user/local/include
 export LIBRARY_PATH=/usr/local/lib
 export LANG="en_US.UTF-8"
-#export LDFLAGS="-L/usr/local/opt/ruby/lib"
-#export CPPFLAGS="-I/usr/local/opt/ruby/include"
-#export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-#alias ls="colorls"
+alias ls="colorls"
 alias ll="exa -l -a --git"
-#alias cat="bat"
 alias ping='prettyping --nolegend'
 alias k=kubectl
 export ZPLUG_HOME=/usr/local/opt/zplug
