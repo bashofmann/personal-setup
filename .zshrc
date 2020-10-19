@@ -30,7 +30,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 export C_INCLUDE_PATH=/user/local/include
 export LIBRARY_PATH=/usr/local/lib
 export LANG="en_US.UTF-8"
-alias ls="colorls"
 alias ll="exa -l -a --git"
 alias ping='prettyping --nolegend'
 alias k=kubectl
@@ -54,6 +53,9 @@ zplug load
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 source <(helm completion zsh)
 source <(kubectl completion zsh)
+source <(k3d completion zsh)
+
+export XDG_DATA_HOME=~/.data
 
 explain () {
   if [ "$#" -eq 0 ]; then
