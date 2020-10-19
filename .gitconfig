@@ -1,8 +1,6 @@
 [user]
 	name = Bastian Hofmann
-	email = bashofmann@gmail.com
-[includeIf "gitdir:~/go/src/gitlab.syseleven.de/"]
-    path = ~/go/src/gitlab.syseleven.de/.gitconfig    
+	email = bashofmann@gmail.com 
 [alias]
     l = log --pretty=format:'%h %Cred%ad%Creset %an %Cgreen%s%Creset' --graph --date=short
 [push]
@@ -12,8 +10,9 @@
     editor = vim
 	autocrlf = input
     eol = lf
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
-    ui = true
+	ui = true
 [branch]
     autosetuprebase = always
 [pull]
@@ -25,7 +24,7 @@
 [ssh]
 	variant = ssh
 [ghq]
-    root = ~/go/src
+    root = ~/dev/src
 [pager]
     fdiff = diff-so-fancy | less --tabs=1,5 -RFX
     fshow = diff-so-fancy | less --tabs=1,5 -RFX
@@ -34,3 +33,19 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+[interactive]
+    diffFilter = delta --color-only    
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	first-run = false
