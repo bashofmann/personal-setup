@@ -1,12 +1,9 @@
-git_repos = [
-]
+disable = ["go"]
 
-disable = ["packagemanagers","go"]
 
+[brew]
+greedy_cask = false
 
 [commands]
-"Homebrew" = "brew update && brew upgrade && brew cu -y && brew cleanup"
-"NPM" = "npm update -g"
-"krew" = "kubectl krew upgrade"
 "helm repos" = "helm repo update"
 "helm plugins" = "helm plugin list | sed 's/\\s.*$//' | tail -n +2 | xargs -n 1 helm plugin update"
