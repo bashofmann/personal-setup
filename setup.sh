@@ -82,6 +82,10 @@ sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking 
 sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# screenshots dir
+mkdir -p $HOME/Screenshots
+defaults write com.apple.screencapture location $HOME/Screenshots
+
 # natural scrolling disabled
 defaults write -g com.apple.swipescrolldirection '0'
 

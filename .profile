@@ -9,3 +9,5 @@ export LIBRARY_PATH=/usr/local/lib
 
 alias ls="ls -Gh"
 alias ll="ls -lah"
+
+export PATH="$HOME/.cargo/bin:$PATH"

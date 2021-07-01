@@ -31,7 +31,6 @@ export C_INCLUDE_PATH=/user/local/include
 export LIBRARY_PATH=/usr/local/lib
 export LANG="en_US.UTF-8"
 alias ll="exa -l -a --git"
-alias ping='prettyping --nolegend'
 alias k=kubectl
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
