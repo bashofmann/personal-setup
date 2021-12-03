@@ -1,4 +1,4 @@
-disable = []
+disable = ["gnome_shell_extensions"]
 
 
 [brew]
